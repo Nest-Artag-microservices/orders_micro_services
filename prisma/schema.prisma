@@ -13,19 +13,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum OrderStatus{
+enum OrderStatus {
   PENDING
   DELIVERED
   CANCELLED
 }
 
-model Order{
-  id String @id @default(uuid())
+model Order {
+  id          String @id @default(uuid())
   totalAmount Float
-  totalItems Int
+  totalItems  Int
+
   status OrderStatus
-  paid Boolean @default(false)
+  paid   Boolean     @default(false)
   paidAt DateTime?
+
   createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt
 }
