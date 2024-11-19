@@ -24,16 +24,19 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
 
   async findOne(id: string) {
 
-
-   const order =await this.order.findFirst({ where: { id } });
-   if (!order) {
-    throw new RpcException({
-      status:HttpStatus.NOT_FOUND,
-      message:"Order not found"
+    const order = await this.order.findFirst({
+      where: { id }
     });
+
+    if ( !order ) {
+      throw new RpcException({ 
+        status: HttpStatus.NOT_FOUND, 
+        message: `Order with id ${ id } not found`
+      });
+    }
+
+    return order;
+
   }
-  
-  return order;
-}
 
 }
