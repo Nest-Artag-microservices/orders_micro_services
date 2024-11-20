@@ -49,15 +49,19 @@ export class OrdersService extends PrismaClient implements OnModuleInit {
           totalItems,
           OrderItem: {
             createMany:{
-              data: {
-                
-              }
+              data: createOrderDto.items.map((orderItem)=>({
+                productId: orderItem.productId,
+                quantity: orderItem.quantity,
+                price: products.find(product => product.id === orderItem.productId).price
+              }))
+
+              
             }
           }
         }
       })
 
-        return {totalAmount}
+        return order
     }catch(e){
       throw new RpcException({
         status: HttpStatus.BAD_REQUEST,
