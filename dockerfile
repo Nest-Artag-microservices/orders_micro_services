@@ -16,7 +16,7 @@ RUN npm install -g pnpm && pnpm install
 COPY . .
 
 # Expone el puerto 54123
-EXPOSE 54123
+EXPOSE 23654
 
 # Comando por defecto para ejecutar la aplicación (asegúrate de modificarlo según sea necesario)
 #CMD ["npm", "start"]
