@@ -5,7 +5,6 @@ import { NATS_SERVICE, envs } from 'src/config';
 @Module({
     imports: [
         ClientsModule.register([
-
             {
               name: NATS_SERVICE, 
               transport: Transport.NATS,
